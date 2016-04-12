@@ -29,6 +29,7 @@ class SingleLinkedList:
         if self.root is None:
             self.root = newNode
             return
+
         tempNode = self.root
         while tempNode.next is not None:
             tempNode = tempNode.next
