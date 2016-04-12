@@ -8,7 +8,6 @@ output: 5
 '''
 递归
 '''
-
 def Solution1(s, i, j):
     if i == j:
         return 1
@@ -44,7 +43,6 @@ print(Solution1(s, 0, len(s)-1))
 
 s的最长回文子序列长度为f(0, s.length()-1)
 '''
-
 def Solution2(s):
     count = [[0 for col in range(len(s))] for row in range(len(s))]
 
