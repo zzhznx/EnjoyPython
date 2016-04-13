@@ -1,3 +1,4 @@
+# 最长上升子序列
 def lis(aList, pre):
     d = [0] * len(aList)
     longest = 1

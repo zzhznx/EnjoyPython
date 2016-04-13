@@ -67,8 +67,9 @@ def printCoins(coinUsed, change):
         print(thisCoin)
         coin -= thisCoin
 
-change = 11
+change = 32
 coinUsed = [0] * (change + 1)
 minCoins = [0] * (change + 1)
 print(dpMakeChange_2([1, 5, 10, 21, 25], change, minCoins, coinUsed))
+print("###")
 printCoins(coinUsed, change)
