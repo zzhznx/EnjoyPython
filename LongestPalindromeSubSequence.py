@@ -19,7 +19,7 @@ def Solution1(s, i, j):
         return max(Solution1(s, i, j-1), Solution1(s, i+1, j))
 
 s = "abcabdaca"
-print(Solution1(s, 0, len(s)-1))
+#print(Solution1(s, 0, len(s)-1))
 
 '''
 动态规划
@@ -42,6 +42,10 @@ print(Solution1(s, 0, len(s)-1))
 由于f(i,j)依赖i+1，所以循环计算的时候，第一维必须倒过来计算，从s.length()-1到0。
 
 s的最长回文子序列长度为f(0, s.length()-1)
+
+
+获取长度时间复杂度O(n),空间复杂度O(n^2)
+printLCS的时间复杂度为O(n)
 '''
 def Solution2(s):
     count = [[0 for col in range(len(s))] for row in range(len(s))]
@@ -53,9 +57,29 @@ def Solution2(s):
                 count[i][j] = count[i+1][j-1] + 2
             else:
                 count[i][j] = max(count[i][j-1], count[i+1][j])
+
+    printLPS(s, count, 0, len(s)-1)
+
     return count[0][len(s)-1]
 
-print(Solution2("abcabdaca"))
+
+def printLPS(s, count, i, j):
+    if j < i:
+        return
+    if i == j:
+        print(s[i])
+        return
+    #if count[i][j] == (count[i+1][j-1] + 2):
+    if s[i] == s[j]:
+        print(s[i])
+        printLPS(s, count, i+1, j-1)
+        print(s[j])
+    elif count[i][j] == count[i+1][j]:
+        printLPS(s, count, i+1, j)
+    elif count[i][j] == count[i][j-1]:
+        printLPS(s, count, i, j-1)
+
+print(Solution2("abcfgbda"))
 
 
 '''
@@ -83,4 +107,4 @@ def Solution3(s):
     else:
         return count[0][len(s)-1]
 
-print(Solution3("abcfgbda"))
+#print(Solution3("abcfgbda"))
